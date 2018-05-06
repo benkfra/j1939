@@ -11,6 +11,7 @@ Pullrequests are of course even more welcome!
 
 The project uses the python-can_ package to support multiple hardware drivers. 
 At the time of writing the supported interfaces are 
+
 * CAN over Serial
 * CAN over Serial / SLCAN
 * IXXAT Virtual CAN Interface
