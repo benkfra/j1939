@@ -46,11 +46,16 @@ Features
 * ECU (CA) Naming according SAE J1939/81
 * (under construction) full featured address claiming procedure according SAE J1939/81
 * full support of transport protocol according SAE J1939/21 for sending and receiveing
+
   - Message Packaging and Reassembly (up to 1785 bytes)
+
     + Transfer Protocol Transfer Data (TP.TD)
     + Transfer Protocol Communication Management (TP.CM)
+
   - Multi-Packet Broadcasts
+
     + Broadcast Announce Message (TP.BAM)
+    
 * (under construction) Requests (global and specific)
 * (under construction) correct timeout and deadline handling
 * (under construction) almost complete testcoverage
@@ -59,15 +64,15 @@ Features
 Installation
 ------------
 
-As soon the package is available in your distro, it's as easy as
+As soon the package is available in your distro, it's as easy as::
 
     $ pip install j1939
 
-In the meanwhile you can either download the wheel-package and issue the command
+In the meanwhile you can either download the wheel-package and issue the command::
 
     $ pip install j1939-0.1.0.dev1-py2.py3-none-any.whl
 
-or do the trick with
+or do the trick with::
 
     $ git clone https://github.com/benkfra/j1939.git
     $ cd j1939
