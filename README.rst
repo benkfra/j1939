@@ -7,8 +7,8 @@ SAE J1939 for Python
    :target: https://pypi.python.org/pypi/j1939/
    :alt: Latest Version on PyPi
 
-.. |docs| image:: https://readthedocs.org/projects/j1939/badge/?version=stable
-   :target: https://j1939.readthedocs.io/en/stable/
+.. |docs| image:: https://readthedocs.org/projects/j1939/badge/?version=latest
+   :target: https://j1939.readthedocs.io/en/latest/
    :alt: Documentation build Status
                 
 .. |build| image:: https://travis-ci.com/benkfra/j1939.svg?branch=master
