@@ -1,6 +1,20 @@
 SAE J1939 for Python
 ====================
 
+|release| |docs| |build|
+
+.. |release| image:: https://img.shields.io/pypi/v/j1939.svg
+   :target: https://pypi.python.org/pypi/j1939/
+   :alt: Latest Version on PyPi
+
+.. |docs| image:: https://readthedocs.org/projects/j1939/badge/?version=stable
+   :target: https://j1939.readthedocs.io/en/stable/
+   :alt: Documentation build Status
+                
+.. |build| image:: https://travis-ci.com/benkfra/j1939.svg?branch=master
+   :target: https://travis-ci.com/benkfra/j1939/branches
+   :alt: Travis CI Server for master branch
+
 A new implementation of the CAN SAE J1939 standard for Python.
 
 WARNING: Currently this project is in alpha-state! Some of the features are not completely working! 
@@ -55,7 +69,7 @@ Features
   - Multi-Packet Broadcasts
 
     + Broadcast Announce Message (TP.BAM)
-    
+
 * (under construction) Requests (global and specific)
 * (under construction) correct timeout and deadline handling
 * (under construction) almost complete testcoverage

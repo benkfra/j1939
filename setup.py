@@ -10,7 +10,7 @@ setup(
     name="j1939",
     url="https://github.com/benkfra/j1939",
     version=__version__,
-    packages=find_packages(exclude=['contrib', 'examples']),
+    packages=find_packages(exclude=['docs', 'examples']),
     author="Frank Benkert",
     author_email="opensource@frank-benkert.de",
     description="SAE J1939 stack implementation",
