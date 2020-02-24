@@ -114,11 +114,17 @@ To simply receive all passing (public) messages on the bus you can subscribe to 
     logging.getLogger('j1939').setLevel(logging.DEBUG)
     logging.getLogger('can').setLevel(logging.DEBUG)
 
-    def on_message(pgn, data):
+    def on_message(priority, pgn, sa, timestamp, data):
         """Receive incoming messages from the bus
 
+        :param int priority:
+            Priority of the message
         :param int pgn:
             Parameter Group Number of the message
+        :param sa:
+            Source Address of the message
+        :param timestamp:
+            Timestamp of the message
         :param bytearray data:
             Data of the PDU
         """
@@ -192,8 +198,14 @@ A more sophisticated example in which the CA class was overloaded to include its
         def on_message(self, pgn, data):
             """Feed incoming message to this CA.
             (OVERLOADED function)
+            :param int priority:
+                Priority of the message
             :param int pgn:
                 Parameter Group Number of the message
+            :param sa:
+                Source Address of the message
+            :param timestamp:
+                Timestamp of the message
             :param bytearray data:
                 Data of the PDU
             """

@@ -203,11 +203,17 @@ class ControllerApplication(object):
         data = self._name.bytes
         self._ecu.send_message(mid.can_id, data)
 
-    def on_message(self, pgn, data):
+    def on_message(self, priority, pgn, sa, timestamp, data):
         """Callback for incoming message
 
+        :param int priority:
+            Priority of the message
         :param int pgn:
             Parameter Group Number of the message
+        :param sa:
+            Source Address of the message
+        :param timestamp:
+            Timestamp of the message
         :param bytearray data:
             Data of the PDU
         """

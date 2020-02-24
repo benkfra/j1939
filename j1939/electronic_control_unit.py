@@ -441,7 +441,7 @@ class ElectronicControlUnit(object):
             # finished reassembly
             if dest_address != j1939.ParameterGroupNumber.Address.GLOBAL:
                 self.send_tp_eom_ack(dest_address, src_address, self._rcv_buffer[buffer_hash]['message_size'], self._rcv_buffer[buffer_hash]['num_packages'], self._rcv_buffer[buffer_hash]['pgn'])
-            self.notify_subscribers(self._rcv_buffer[buffer_hash]['pgn'], self._rcv_buffer[buffer_hash]['data'])
+            self.notify_subscribers(mid.priority, self._rcv_buffer[buffer_hash]['pgn'], src_address, timestamp, self._rcv_buffer[buffer_hash]['data'])
             del self._rcv_buffer[buffer_hash]
             self._job_thread_wakeup()
             return
@@ -475,7 +475,7 @@ class ElectronicControlUnit(object):
 
         if pgn.is_pdu2_format:
             # direct broadcast
-            self.notify_subscribers(pgn.value, data)
+            self.notify_subscribers(mid.priority, pgn.value, mid.source_address, timestamp, data)
             return
 
         # peer to peer
@@ -505,22 +505,28 @@ class ElectronicControlUnit(object):
         elif pgn_value == j1939.ParameterGroupNumber.PGN.DATATRANSFER:
             self._process_tp_dt(mid, dest_address, data, timestamp)
         else:
-            self.notify_subscribers(pgn_value, data)
+            self.notify_subscribers(mid.priority, pgn_value, mid.source_address, timestamp, data)
             return
 
 
-    def notify_subscribers(self, pgn, data):
+    def notify_subscribers(self, priority, pgn, sa, timestamp, data):
         """Feed incoming message to subscribers.
 
+        :param int priority:
+            Priority of the message
         :param int pgn:
             Parameter Group Number of the message
+        :param int sa:
+            Source Address of the message
+        :param int timestamp:
+            Timestamp of the CAN message
         :param bytearray data:
             Data of the PDU
         """
         logger.debug("notify subscribers for PGN {}".format(pgn))
         # TODO: we have to filter the dest_address here!
         for callback in self._subscribers:
-            callback(pgn, data)
+            callback(priority, pgn, sa, timestamp, data)
 
     def add_ca(self, **kwargs):
         """Add a ControllerApplication to the ECU.
